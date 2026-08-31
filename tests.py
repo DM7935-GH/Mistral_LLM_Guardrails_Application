@@ -3,11 +3,12 @@
 ###############################################################
 import requests
 import unittest
-import database
+import firebase_database
 
 LLM = "http://localhost:3000/llm"
 GUARDRAILS = "http://localhost:3001/guardrails"
 AUBERGE = "http://localhost:3002/auberge"
+db = firebase_database
 
 class Testing(unittest.TestCase):
   ############################################################
@@ -24,7 +25,7 @@ class Testing(unittest.TestCase):
   ## test_002_guardrails				    ##
   ############################################################
   def test_002_guardrails(self):
-    database.db.clear()
+    db.clear()
 
     id   = "931"
     regx = r"Prince Andrew"
@@ -44,7 +45,7 @@ class Testing(unittest.TestCase):
   ## test_003_guardrails				    ##
   ############################################################
   def test_003_guardrails(self):
-    database.db.clear()
+    db.clear()
 
     id   = "email-001"
     regx = r"[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+" 
@@ -64,7 +65,7 @@ class Testing(unittest.TestCase):
   ## test_004_guardrails				    ##
   ############################################################
   def test_004_guardrails(self):
-    database.db.clear()
+    db.clear()
 
     id   = "Broken"
     regx = r"*a-z]" 
@@ -78,7 +79,7 @@ class Testing(unittest.TestCase):
   ## test_005_auberge                                       ##
   ############################################################
   def test_005_auberge(self):
-    database.db.clear()
+    db.clear()
 
     id   = "Roma"
     regx = r"Rome" 
